@@ -12,10 +12,11 @@ http.createServer(function (req, res) {
     // trying to use the new WhatWG URL object and trying to parse the searchParams
     let urlObj = url.parse(req.url, true, false);
     let qstr = urlObj.query;
-    console.log(qstr);
+    console.log(qstr.msg);
     if (!qstr.msg) {
-        resMsg = '<h2>No msg parameter</h2>\n';
-    } else {
+        resMsg = '<h2>No filters applied on grocery list.</h2>\n';
+        //TODO: render new page with all grocery items
+    } else {//TODO: expand this if/else for search filters
         resMsg = '<h1>'+messages[qstr.msg]+'</h2>';
     }
     resBody = resBody + '<html><head><title>Simple HTTP Server</title></head>';
@@ -23,5 +24,5 @@ http.createServer(function (req, res) {
     res.setHeader("Content-Type", "text/html");
     res.writeHead(200);
     res.end(resBody + '\n</body></html>');
-}).listen(8088);
+}).listen(3000);
 

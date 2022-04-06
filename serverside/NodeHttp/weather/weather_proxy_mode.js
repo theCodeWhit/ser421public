@@ -40,7 +40,7 @@ function getWeather(city, res){
 }
 http.createServer(function (req, res) {
   console.log(req.method);
-  if (req.method == "POST"){
+  if (req.method === "POST"){
     var reqData = '';
     req.on('data', function (chunk) {
       reqData += chunk;
